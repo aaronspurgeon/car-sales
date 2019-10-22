@@ -21,8 +21,17 @@ export function reducer(state = initialState, action) {
   switch (action.type) {
     case ADDED_FEATURES:
       return {
+        // ...state,
+        // features: [...state.features, action.payload]
         ...state,
-        features: action.payload
+        car: {
+          ...state.car,
+          price: state.car.price + action.payload.price,
+          features: [...state.car.features, action.payload]
+        },
+        additionalFeatures: state.additionalFeatures.filter(
+          item => item.id !== action.payload.id
+        )
       };
     default:
       return state;
