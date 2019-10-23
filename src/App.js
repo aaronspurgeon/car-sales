@@ -4,14 +4,14 @@ import AddedFeatures from "./components/AddedFeatures";
 import AdditionalFeatures from "./components/AdditionalFeatures";
 import Total from "./components/Total";
 import { connect } from "react-redux";
-import { addFeatures } from "./actions/details";
+import { addFeatures, removeFeatures } from "./actions/details";
 
 const App = ({ car, additionalFeatures, additionalPrice, addFeatures }) => {
   return (
     <div className="boxes">
       <div className="box">
         <Header car={car} />
-        <AddedFeatures car={car} />
+        <AddedFeatures car={car} removeFeatures={removeFeatures} />
       </div>
       <div className="box">
         <AdditionalFeatures
@@ -25,7 +25,8 @@ const App = ({ car, additionalFeatures, additionalPrice, addFeatures }) => {
 };
 
 const mapDispatchToProps = {
-  addFeatures
+  addFeatures,
+  removeFeatures
 };
 
 function mapStateToProps(state) {
